@@ -1,4 +1,5 @@
 mod methods;
+mod closures;
 
 fn print_value(x: i32) {
     println!("value = {}", x);
@@ -30,4 +31,5 @@ fn functions() {
 fn main() {
     functions();
     methods::methods();
+    closures::closures();
 }
