@@ -1,6 +1,8 @@
 #![allow(dead_code)]
 #![allow(unused_variables)]
 
+use std::mem;
+
 struct Point {
     x: f64,
     y: f64,
@@ -102,9 +104,49 @@ fn options() {
     // }
 }
 
+fn arrays() {
+    let mut a: [i32; 5] = [1, 2, 3, 4, 5];
+    // let mut a = [1,2,3,4,5];
+    println!("a has {} elements, first elem is {}", a.len(), a[0]);
+    a[0] = 321;
+    println!("a has {} elements, first elem is {}", a.len(), a[0]);
+
+    println!("{:?}", a); // :? output debug info
+
+    if a != [1, 2, 3, 4, 5] {
+        println!("Arrays do not match");
+    }
+    if a != [321, 2, 3, 4, 5] {
+        println!("Arrays do not match");
+    }
+
+    // error[E0277]: can't compare `[i32; 5]` with `[{integer}; 10]`
+    // if a != [321, 2, 3, 4, 5, 5, 5, 5, 5, 5] {
+    //     println!("Arrays do not match");
+    // }
+
+    let b = [1u8; 10];
+    for i in 0..b.len() {
+        println!("{}", b[i]);
+    }
+
+    println!("array takes {} bytes", mem::size_of_val(&b));
+
+    // matrix array of arrays
+    let mtx: [[f32; 3]; 2] = [[1.0, 0.0, 0.0], [3.0, 4.0, 0.0]];
+    println!("{:?}", mtx);
+
+    for i in 0..mtx.len() {
+        for j in 0..mtx[i].len() {
+            println!("{}", mtx[i][j]);
+        }
+    }
+}
+
 fn main() {
     structures();
     enums();
     unions();
     options();
+    arrays();
 }
