@@ -43,7 +43,8 @@ fn while_and_loop() {
     }
 
     let mut y = 1;
-    loop // while true
+    loop
+    // while true
     {
         y *= 2;
         println!("y = {}", y);
@@ -53,9 +54,9 @@ fn while_and_loop() {
     }
 }
 
-fn for_loop(){
+fn for_loop() {
     // break and continue work in here also
-    for x in 1..11 {
+    for x in 1..11 { // .. is an exclusive range
         println!("x = {}", x);
     }
 
@@ -64,8 +65,25 @@ fn for_loop(){
     }
 }
 
+fn match_statement() {
+    let country_code = 44;
+    let country = match country_code {
+        44 => "UK",
+        46 => "Sweden",
+        7 => "Russia",
+        1..=999 => "UNKNOWN", // ... & ..= are inclusive ranges (exclusive range not currently allowed in match statement)
+        _ => "INVALID"
+    };
+
+    println!(
+        "The country with country code {} is {}",
+        country_code, country
+    );
+}
+
 fn main() {
     if_statement();
     while_and_loop();
     for_loop();
+    match_statement();
 }
