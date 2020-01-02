@@ -1,5 +1,6 @@
-mod methods;
 mod closures;
+mod higher_order_functions;
+mod methods;
 
 fn print_value(x: i32) {
     println!("value = {}", x);
@@ -32,4 +33,5 @@ fn main() {
     functions();
     methods::methods();
     closures::closures();
+    higher_order_functions::higher_order_functions();
 }
