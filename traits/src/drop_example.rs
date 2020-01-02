@@ -1,3 +1,6 @@
+#[allow(unused_assignments)]
+#[allow(unused_variables)]
+
 // equivalent to destructor
 
 struct Creature {
