@@ -53,7 +53,19 @@ fn while_and_loop() {
     }
 }
 
+fn for_loop(){
+    // break and continue work in here also
+    for x in 1..11 {
+        println!("x = {}", x);
+    }
+
+    for (pos, y) in (30..41).enumerate() {
+        println!("{}: {}", pos, y);
+    }
+}
+
 fn main() {
     if_statement();
     while_and_loop();
+    for_loop();
 }
