@@ -61,11 +61,11 @@ union IntOrFloat {
     f: f32,
 }
 
-fn process_value(iof: IntOrFloat){
-    unsafe{
+fn process_value(iof: IntOrFloat) {
+    unsafe {
         match iof {
-            IntOrFloat {i: 42} => { println!("meaning of life value")},
-            IntOrFloat { f } => {println!("value = {}", f)}
+            IntOrFloat { i: 42 } => println!("meaning of life value"),
+            IntOrFloat { f } => println!("value = {}", f),
         }
     }
 }
@@ -81,8 +81,30 @@ fn unions() {
     process_value(iof);
 }
 
+fn options() {
+    let x = 3.0;
+    let y = 0.1;
+
+    //Option -> Some(v) | None
+    let result = if y != 0.0 { Some(x / y) } else { None };
+
+    match result {
+        Some(z) => println!("{}", z),
+        None => println!("Cannot divide by Zero"),
+    }
+
+    if let Some(z) = result {
+        println!("Got a result {}", z);
+    }
+
+    // while let Some(z) = result {
+    //     println!("Got a result {}", z);
+    // }
+}
+
 fn main() {
     structures();
     enums();
     unions();
+    options();
 }
