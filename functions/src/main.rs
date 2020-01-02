@@ -1,3 +1,5 @@
+mod methods;
+
 fn print_value(x: i32) {
     println!("value = {}", x);
 }
@@ -27,4 +29,5 @@ fn functions() {
 
 fn main() {
     functions();
+    methods::methods();
 }
