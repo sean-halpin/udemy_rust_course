@@ -1,5 +1,15 @@
 use std::mem;
 
+// constants
+
+// no fixed address
+// at compilation a const variable will be compiled inline
+const GLOBAL_VARIABLE: i8 = 42;
+// a global variable available throughout the program
+static STATIC_VARIABLE: i8 = 69;
+// a global mutable variable (can only be used in unsafe code block)
+static mut STATIC_MUTABLE_VARIABLE: i8 = 55;
+
 fn core_data_types() {
     let a: u8 = 123; // 8bits u8:unsigned/i8:signed
     println!("a = {}", a);
@@ -62,17 +72,17 @@ fn operators() {
     let two_to_pow_ten = 1 << 10;
     println!("2^10 = {}", two_to_pow_ten);
 
-    // logical 
+    // logical
     let pi_less_four = std::f64::consts::PI < 4.0; // true
-    // < <= >= ==
-    println!("pi < 4 ? {}", pi_less_four );
+                                                   // < <= >= ==
+    println!("pi < 4 ? {}", pi_less_four);
 
     let x = 5;
     let x_is_5 = x == 5; // true
     println!("5 == 5 ? {}", x_is_5);
 }
 
-fn scope_and_shadowing(){
+fn scope_and_shadowing() {
     let a = 123;
     {
         let b = 456;
@@ -81,14 +91,27 @@ fn scope_and_shadowing(){
         println!("inside a = {}", a); // 666
     }
     println!("a = {}", a); // 123
-    
     // Compile time error
     // error[E0425]: cannot find value `b` in this scope -- 'rustc --explain E0425'
     // println!("b = {}", b);
+}
+
+fn constants_global_variables() {
+    println!("GLOBAL_VARIABLE = {}", GLOBAL_VARIABLE);
+    println!("STATIC_VARIABLE = {}", STATIC_VARIABLE);
+    
+    // error[E0133]: use of mutable static is unsafe and requires unsafe function or block
+    // println!("STATIC_MUTABLE_VARIABLE = {}", STATIC_MUTABLE_VARIABLE);
+    unsafe {
+        println!("STATIC_MUTABLE_VARIABLE = {}", STATIC_MUTABLE_VARIABLE);
+        STATIC_MUTABLE_VARIABLE += 1;
+        println!("STATIC_MUTABLE_VARIABLE = {}", STATIC_MUTABLE_VARIABLE);
+    }
 }
 
 fn main() {
     core_data_types();
     operators();
     scope_and_shadowing();
+    constants_global_variables();
 }
