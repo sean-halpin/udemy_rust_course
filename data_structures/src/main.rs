@@ -181,6 +181,51 @@ fn slices() {
     println!("{:?}", data);
 }
 
+fn strings() {
+    let s: &'static str = "hello there";
+    // s = ""; // error[E0384]: cannot assign twice to immutable variable `s`
+    // let h=s[0];
+    for c in s.chars().rev() {
+        println!("{}", c);
+    }
+
+    if let Some(first_char) = s.chars().nth(0) {
+        println!("{}", first_char);
+    }
+
+    // heap allocated
+    // String
+    let mut letter = String::new();
+    let mut a = 'a' as u8;
+    while a <= ('z' as u8) {
+        letter.push(a as char);
+        letter.push_str(",");
+        a += 1;
+    }
+    println!("{:?}", letter);
+
+    // &str <> String
+    let u: &str = &letter;
+
+    // concat
+    // String + str
+    let z = letter + "abc";
+    println!("{:?}", z);
+    // let zz = letter + &letter;
+    // println!("{:?}", zz);
+
+    let mut abc = String::from("hello world");
+    println!("{}", abc);
+    let mut def = "helloo".to_string();
+    println!("{}", def);
+    def.remove(0);
+    println!("{}", def);
+    def.push_str("!!!");
+    println!("{}", def);
+    def = def.replace("!","xx");
+    println!("{}", def);
+}
+
 fn main() {
     structures();
     enums();
@@ -189,4 +234,5 @@ fn main() {
     arrays();
     vectors();
     slices();
+    strings();
 }
