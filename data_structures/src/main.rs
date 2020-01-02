@@ -5,6 +5,7 @@ use std::collections::HashMap;
 use std::mem;
 use std::vec::Vec;
 mod pattern_matching;
+mod generics;
 
 struct Point {
     x: f64,
@@ -291,4 +292,5 @@ fn main() {
     tuples();
     hashmaps();
     pattern_matching::pattern_matching();
+    generics::generics();
 }
