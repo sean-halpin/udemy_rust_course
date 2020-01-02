@@ -1,4 +1,5 @@
 use std::mem;
+mod stack_heap;
 
 // constants
 
@@ -91,6 +92,7 @@ fn scope_and_shadowing() {
         println!("inside a = {}", a); // 666
     }
     println!("a = {}", a); // 123
+
     // Compile time error
     // error[E0425]: cannot find value `b` in this scope -- 'rustc --explain E0425'
     // println!("b = {}", b);
@@ -99,7 +101,7 @@ fn scope_and_shadowing() {
 fn constants_global_variables() {
     println!("GLOBAL_VARIABLE = {}", GLOBAL_VARIABLE);
     println!("STATIC_VARIABLE = {}", STATIC_VARIABLE);
-    
+
     // error[E0133]: use of mutable static is unsafe and requires unsafe function or block
     // println!("STATIC_MUTABLE_VARIABLE = {}", STATIC_MUTABLE_VARIABLE);
     unsafe {
@@ -114,4 +116,5 @@ fn main() {
     operators();
     scope_and_shadowing();
     constants_global_variables();
+    stack_heap::stack_and_heap();
 }
