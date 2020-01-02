@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 #![allow(unused_variables)]
 
+use std::collections::HashMap;
 use std::mem;
 use std::vec::Vec;
 
@@ -237,7 +238,7 @@ fn tuples() {
     println!("sp = {:?}", sp);
     println!("{0} + {1} = {2}, {0} * {1} = {3}", x, y, sp.0, sp.1);
     // destructuring
-    let (a,b) = sp;
+    let (a, b) = sp;
     println!("{0} + {1} = {2}, {0} * {1} = {3}", x, y, a, b);
 
     let sp2 = sum_and_product(4, 7);
@@ -245,15 +246,36 @@ fn tuples() {
     println!("{:?}", combined);
     println!("{}", (combined.1).1);
 
-    let ((c,d),(e,f)) = combined;
+    let ((c, d), (e, f)) = combined;
     println!("{}", d);
 
-    let foo = (true, 42.0, -1i8)
+    let foo = (true, 42.0, -1i8);
     println!("{:?}", foo);
 
     // single element tuple
     let meaning = (42,);
     println!("{:?}", meaning);
+}
+
+fn hashmaps() {
+    let mut shapes = HashMap::new();
+    shapes.insert(String::from("triangle"), 3);
+    shapes.insert(String::from("square"), 4);
+
+    println!("a square has {} sides", shapes["square"]);
+    shapes.insert(String::from("square"), 5);
+
+    for (key, value) in &shapes {
+        println!("{}, {}", key, value);
+    }
+
+    shapes.entry("circle".into()).or_insert(1);
+    println!("{:?}", shapes);
+    {
+        let actual = shapes.entry("circle".into()).or_insert(2);
+        *actual = 0;
+    }
+    println!("{:?}", shapes);
 }
 
 fn main() {
@@ -266,4 +288,5 @@ fn main() {
     slices();
     strings();
     tuples();
+    hashmaps();
 }
