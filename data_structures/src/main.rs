@@ -2,6 +2,7 @@
 #![allow(unused_variables)]
 
 use std::mem;
+use std::vec::Vec;
 
 struct Point {
     x: f64,
@@ -143,10 +144,37 @@ fn arrays() {
     }
 }
 
+fn vectors() {
+    let mut a = Vec::new();
+    a.push(1);
+    a.push(2);
+    a.push(3);
+    println!("a = {:?}", a);
+    a.push(44);
+    println!("a = {:?}", a);
+    let idx: usize = 0;
+    println!("a[0] = {:?}", a[idx]);
+    // Option , protect against out of bounds indexing
+    match a.get(6) {
+        Some(x) => println!("a[6] = {}", x),
+        None => println!("No element"),
+    }
+    for x in &a {
+        println!("{}", x)
+    }
+    let last_elem = a.pop(); // Option
+    println!("last is {:?}", last_elem);
+
+    while let Some(x) = a.pop() {
+        println!("{}", x);
+    }
+}
+
 fn main() {
     structures();
     enums();
     unions();
     options();
     arrays();
+    vectors();
 }
