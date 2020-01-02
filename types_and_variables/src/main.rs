@@ -72,7 +72,23 @@ fn operators() {
     println!("5 == 5 ? {}", x_is_5);
 }
 
+fn scope_and_shadowing(){
+    let a = 123;
+    {
+        let b = 456;
+        println!("inside b = {}", b); // 456
+        let a = 666; // this a shadows the a above
+        println!("inside a = {}", a); // 666
+    }
+    println!("a = {}", a); // 123
+    
+    // Compile time error
+    // error[E0425]: cannot find value `b` in this scope -- 'rustc --explain E0425'
+    // println!("b = {}", b);
+}
+
 fn main() {
     core_data_types();
     operators();
+    scope_and_shadowing();
 }
