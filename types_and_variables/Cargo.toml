@@ -1,5 +1,5 @@
 [package]
-name = "TypesAndVariables"
+name = "types_and_variables"
 version = "0.1.0"
 authors = ["Sean <xxx@gmail.com>"]
 edition = "2018"
