@@ -52,11 +52,37 @@ fn enums() {
             black: 255,
         } => println!("black"),
         Colour::RgbColor(r, g, b) => println!("{},{},{}", r, g, b),
-        _ => ()
+        _ => (),
     }
+}
+
+union IntOrFloat {
+    i: i32,
+    f: f32,
+}
+
+fn process_value(iof: IntOrFloat){
+    unsafe{
+        match iof {
+            IntOrFloat {i: 42} => { println!("meaning of life value")},
+            IntOrFloat { f } => {println!("value = {}", f)}
+        }
+    }
+}
+
+fn unions() {
+    let mut iof = IntOrFloat { i: 123 };
+    iof.i = 2345;
+
+    let value = unsafe { iof.i };
+    println!("iof.i = {}", value);
+
+    iof.f = 42.0;
+    process_value(iof);
 }
 
 fn main() {
     structures();
     enums();
+    unions();
 }
