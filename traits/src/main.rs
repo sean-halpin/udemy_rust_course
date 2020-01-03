@@ -1,8 +1,9 @@
-mod traits;
-mod into_example;
 mod drop_example;
+mod dynamic_dispatch;
+mod into_example;
 mod op_overloading;
 mod static_dispatch;
+mod traits;
 
 fn main() {
     traits::traits();
@@ -10,4 +11,5 @@ fn main() {
     drop_example::drop_example();
     op_overloading::op_overloading();
     static_dispatch::static_dispatch();
+    dynamic_dispatch::dynamic_dispatch();
 }
