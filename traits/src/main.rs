@@ -4,6 +4,7 @@ mod into_example;
 mod op_overloading;
 mod static_dispatch;
 mod traits;
+mod vectors_of_diff_objects;
 
 fn main() {
     traits::traits();
@@ -12,4 +13,5 @@ fn main() {
     op_overloading::op_overloading();
     static_dispatch::static_dispatch();
     dynamic_dispatch::dynamic_dispatch();
+    vectors_of_diff_objects::vectors_of_diff_objects();
 }
