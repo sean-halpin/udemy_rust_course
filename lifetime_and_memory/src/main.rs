@@ -1,3 +1,4 @@
+mod atomic_counted_variables;
 mod borrowing;
 mod lifetimes;
 mod lifetimes_in_structure_impl;
@@ -10,4 +11,5 @@ fn main() {
     lifetimes::lifetimes();
     lifetimes_in_structure_impl::lifetimes_in_structure_impl();
     ref_counted_variables::ref_counted_variables();
+    atomic_counted_variables::atomic_counted_variables();
 }
