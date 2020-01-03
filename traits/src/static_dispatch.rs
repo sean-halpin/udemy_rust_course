@@ -19,10 +19,12 @@ impl Printable for String
     }
 }
 
+// dynamic dispatch
 fn print(z:&Printable){
-
+    println!("{}", z.format());
 }
 
+// static dispatch
 fn print_it<T: Printable>(z: T){
     println!("{}", z.format());
 } // monomorphisation
